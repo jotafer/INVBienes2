@@ -5,6 +5,7 @@ namespace SisInventario\Http\Controllers;
 use Illuminate\Http\Request;
 use SisInventario\Http\Controllers\Controller;
 use SisInventario\Proveedor;
+use SisInventario\Altaesp;
 
 class ProveedorController extends Controller
 {
@@ -40,6 +41,21 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::findOrFail($id);
         return view('proveedores.edit')->with(compact('proveedor'));
+    }
+
+
+
+    public function proveedoresespecie(Request $request)
+    {
+
+        $descripcion = $request->get('descripcion');
+
+        $altaesps = Altaesp::orderBy('id', 'DESC')
+            //->where('descripcion', 'LIKE', '%$descripcion%"')
+            ->descripcion($descripcion)
+            ->paginate(4);
+
+        return view('proveedoresespecie')->with(compact('altaesps'));
     }
 
 

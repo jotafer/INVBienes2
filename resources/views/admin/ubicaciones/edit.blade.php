@@ -68,12 +68,21 @@
                             <button class="btn btn-success">Guardar</button>
                         </div>
                 </form>
+
+
+
+
+
+
+
+
+
                     </br>
 
                 <div class="row">
                 <div class="col-md-9">
-                    <p>&nbsp&nbsp&nbsp Sub ubicaciones</p>
-                    <form action="/sububicaciones" method="POST" class="form-inline">
+                    <label>&nbsp&nbsp&nbsp Sub ubicaciones</label>
+                    <form action="/sububicaciones" name="formulario" method="POST" class="form-inline">
                         {{ csrf_field() }}
                     <input type="hidden" name="ubicacion_id" value="{{ $ubicacion->id }}">
                         
@@ -83,7 +92,7 @@
 
 </tr>
 <tr style="height: 26px;">
-<td style="width: 123px; height: 26px;"><select id="select-codigo" class="form-control input-sm" name="codigo">
+<td style="width: 123px; height: 26px;"><select id="select-codigo" class="form-control" name="codigo">
 <option value="">Ingrese Codigo</option>
 <option value="01">01</option>
 <option value="02">02</option>
@@ -112,18 +121,34 @@
 <option value="19">19</option>
 <option value="20">20</option>
 </select></td>
-<td style="width: 205px; height: 26px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="form-control input-sm" name="subdependenciamunicipal" type="text" placeholder="Ingrese nombre" /></td>
-<td style="width: 79px; height: 26px;"><button class="btn btn-sm btn-primary">A&ntilde;adir</button></td>
+
+
+
+                            <input id="ubicacionSeleccionado" name="ubicacsel" value="{{ $ubicacion->id }}" type="hidden">
+                            <input id="sububicacionSeleccionado" name="sububicacsel" type="hidden">
+
+                            <input id="codificacion" name="codificacion" type="hidden">    
+
+                            </div>    
+
+
+
+
+<td style="width: 205px; height: 26px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="form-control" name="subdependenciamunicipal" type="text" placeholder="Ingrese nombre dependencia municipal" /></td>
+<td style="width: 79px; height: 26px;"><button class="btn btn btn-primary" onClick="javascript:procesar();"/>A&ntilde;adir</button></td>
 </tr>
 </tbody>
 </table>
+
+
+
 
 
                     </form>
 
                 </br>
 
-                    <table class="table table-bordered" style="font-size:14px">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>Codigo</th>
@@ -161,5 +186,32 @@
 @section('scripts') 
 
 <script language="JavaScript" type="text/javascript" src="/js/admin/sububicaciones/edit.js"></script>
+
+<script type="text/javascript">
+        $(document).on('change', '#select-codigo', function(event) {
+    
+
+        $('#sububicacionSeleccionado').val($("#select-codigo option:selected").text());  
+     
+});
+    </script>
+
+
+    <script type="text/javascript">
+
+        function procesar() {
+
+        ubicacionSeleccionado=document.getElementById('ubicacionSeleccionado').value;
+        sububicacionSeleccionado=document.getElementById('sububicacionSeleccionado').value;     
+
+        codificacion=ubicacionSeleccionado+' , '+sububicacionSeleccionado;
+
+        document.getElementById('codificacion').value=codificacion;
+
+        document.forms.formulario.submit();
+
+    }
+
+    </script>    
 
 @endsection

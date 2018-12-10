@@ -17,12 +17,13 @@ class Ubicacion extends Model{
 
     public static $rules = [
         'dependenciamunicipal' => 'required|string|max:255',
-        'codigo' => 'required|numeric|digits:2',
+        'codigo' => 'required|numeric|digits:2|unique:ubicacion'
     ];
 
     public static $messages = [
         'dependenciamunicipal' => 'Es necesario ingresar un nombre para la dependencia.',
-        'codigo.required' => 'Es necesario ingresar un codigo para la dependencia.'
+        'codigo.required' => 'Es necesario ingresar un codigo para la dependencia.',
+        'codigo.unique' => 'Esta ubicacion ya se encuentra registrada.',
 
     ];
 

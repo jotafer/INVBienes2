@@ -99,8 +99,6 @@
                                         <td><label>Especie:</label></td>
                                         <td><input type="text" name="grupo" class="form-control" readonly value="{{ $inventariable->especie_id }}"></td>
                                     </tr>
-                                        <td></td>
-                                        <td></td>
 
                                     <tr>
                                        <input type="hidden" name="movimiento_id" value="3">
@@ -122,14 +120,19 @@
                                         <td><input type="text" name="preciounitario" class="form-control" readonly value="{{ $inventariable->costo_incorporacion }}"></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="destino">Destino:</label></td>
+                                        <td><label>Destino:</label></td>
                                         <td><select name="ubicacion_id" class="form-control" id="select-ubicacion">
-                                    <option value="">Seleccione Destino</option>
-                                       @foreach ($ubicaciones as $ubicacion)
-                                            <option value="{{$ubicacion->id}}">{{$ubicacion->id}} - {{$ubicacion->dependenciamunicipal}}</option>
-                                        @endforeach
-                                </select></td>
+                                            <option value="">Seleccione Destino</option>
+                                                @foreach ($ubicaciones as $ubicacion)
+                                                <option value="{{$ubicacion->id}}">{{$ubicacion->id}} - {{$ubicacion->dependenciamunicipal}}</option>
+                                                @endforeach
+                                            </select></td>
                                     </tr>
+                                        <td><label>Sub destino:</label></td>
+                                        <td><select name="sububicacion_id" class="form-control" id="select-sububicacion">
+                                                <option value="">Seleccione Sub destino</option>
+                                            </select>
+                                        </td>
                                 </table>
                                  </div>
 
@@ -150,6 +153,7 @@
     <script src="/js/users/inventariables/jquery-ui.js"></script>
     <script src="/js/users/grupos/index.js"></script>
     <script src="/js/admin/proveedores/edit.js"></script>
+    <script src="/js/users/ubicaciones/index.js"></script>
 
     <script type="text/javascript">
 

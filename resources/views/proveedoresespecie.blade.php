@@ -22,7 +22,7 @@
             </div>
 
 
-                <h3 class="panel-title">Seleccione especie</h3>  
+                <label>Seleccione especie</label>  
 
 
                 </br>
@@ -30,12 +30,12 @@
 
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                   <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>Inventario</th>
                                 <th>Descripción especie</th>
-                                <th>Movimiento</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="dashboard_especies_alta"></tbody>
@@ -60,7 +60,7 @@
                                 <th>{{ $altaesp->descripcion }}</th>
                                 <th>
                                     <a href="/proveedores/{{$altaesp->id}}" class="btn btn-primary btn-sm">
-                                    <span class="glyphicon glyphicon-list"></span> Proveedores</button>            
+                                    <span class="glyphicon glyphicon-list"></span>&nbsp&nbspProveedores</button>            
 
                                 </th>
 

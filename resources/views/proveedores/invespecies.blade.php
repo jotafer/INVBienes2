@@ -59,8 +59,8 @@
                                 </th>
                                 <th>{{ $altaesp->descripcion }}</th>
                                 <th>
-                                    <a href="/proveedores/{{$altaesp->id}}" class="btn btn-primary btn-sm">
-                                    <span class="glyphicon glyphicon-list"></span> Proveedores</button>            
+                                    <a href="/nuevaalta/{{$altaesp->id}}" class="btn btn-primary btn-sm">
+                                    <span class="glyphicon glyphicon-plus"></span> Nueva alta</button>            
 
                                 </th>
 

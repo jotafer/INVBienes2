@@ -87,7 +87,7 @@
                             </div>
                     </form> 
 
-                    <table class="table table-bordered">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>Nombre</th>

@@ -27,7 +27,8 @@ class Inventariable extends Model
         'descripcionbien' => 'nullable|string|max:255',
         'costo_incorporacion' => 'required|numeric',
         'observaciones' => 'string|max:255',
-        'ubicacion_id' => 'required'
+        'ubicacion_id' => 'required',
+        'subicacion_id' => 'required'
     ];
 
     public static $messages = [
@@ -45,12 +46,13 @@ class Inventariable extends Model
         'descripcionbien.required' => 'Es necesario ingresar la descripcion del bien.',
         'costo_incorporacion.required' => 'Es necesario ingresar el costo del bien.',
         'estado_conservacion.required' => 'Es necesario ingresar estado del bien.',
-        'ubicacion_id.required' => 'Es necesario ingresar la ubicacion a la que pertenece.'
+        'ubicacion_id.required' => 'Es necesario ingresar la ubicacion a la que pertenece.',
+        'ubicacion_id.required' => 'Es necesario ingresar la sub ubicacion a la que pertenece.'
 
     ];
 
     protected $fillable = [
-        'fecha', 'proveedor','ordendecompra', 'factura','grupo_id', 'subgrupo_id', 'especie_id', 'descripcionbien', 'costo_incorporacion', 'ubicacion_id', 'altaesp_id', 'estado_conservacion', 'usuario'
+        'fecha', 'proveedor','ordendecompra', 'factura','grupo_id', 'subgrupo_id', 'especie_id', 'descripcionbien', 'costo_incorporacion', 'ubicacion_id', 'sububicacion_id','altaesp_id', 'estado_conservacion', 'usuario'
     ];
 
     public function altaesp()
@@ -62,6 +64,18 @@ class Inventariable extends Model
     {
         if($descripcionbien) 
             return $query->where('descripcionbien', 'LIKE', "%$descripcionbien%");   
+    }
+
+    public function scopeUbicacion_id($query, $ubicacion_id)
+    {
+        if($ubicacion_id) 
+            return $query->where('ubicacion_id', 'LIKE', "%$ubicacion_id%");   
+    } 
+
+    public function scopeSububicacion_id($query, $sububicacion_id)
+    {
+        if($sububicacion_id) 
+            return $query->where('sububicacion_id', 'LIKE', "%$sububicacion_id%");   
     } 
 
 }

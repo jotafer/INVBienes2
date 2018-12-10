@@ -41,9 +41,8 @@ class HomeespController extends Controller
     {
 
         $descripcion = $request->get('descripcion');
-
         $altaesps = Altaesp::orderBy('id', 'DESC')
-            //->where('descripcion', 'LIKE', '%$descripcion%"')
+            ->withTrashed()
             ->descripcion($descripcion)
             ->paginate(4);
 
@@ -113,7 +112,7 @@ class HomeespController extends Controller
 
     public function delete($id)
     {
-        Alta::find($id)->delete();
+        Altaesp::find($id)->delete();
 
         return back()->with('notification','La alta ha sido eliminada.');
         

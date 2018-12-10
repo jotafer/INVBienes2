@@ -10,6 +10,10 @@ use SisInventario\Ubicacion;
 class SububicacionController extends Controller{
 
 
+    public function byUbicacion($id)
+    {
+        return Sububicacion::where('ubicacion_id', $id)->get();
+    }
 
 
     public function index()

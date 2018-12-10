@@ -51,25 +51,11 @@
                         </div>
                     @endif    
                             
-            <form action="" method="POST">
-                {{ csrf_field() }}
-
-                <div class="form-group">
-                    <label for="descripcion">Descripcion del grupo de especies:</label>
-                    <input type="text" name="descripcion" class="form-control" value="{{ $altaesp->descripcion }}">
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-success">Guardar</button>
-                </div> 
-            </form>
-
-        </br>
-        </br>
+          
 
             <div class="row">
                 <div class="col-md-8">
-                    <p>Proveedores</p>
+                    <h3>Proveedores de {{ $altaesp->descripcion }}</h3>
                     <form action="/proveedores" method="POST" class="form-inline">
                         {{ csrf_field() }}
                         <div class="form-group">
@@ -77,7 +63,7 @@
                             <input type="hidden" name="altaesp_id" value="{{ $altaesp->id }}">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn btn-primary">Añadir</button>
+                            <button class="btn btn-primary">Añadir</button>
                         </div>
                     </form>
 
@@ -86,7 +72,7 @@
                     <table class="table table-bordered" style="font-size:14px">
                         <thead>
                             <tr>
-                                <th>Nombre prov.</th>
+                                <th>Nombre proveedor</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -109,58 +95,6 @@
                 </div>
 
 
-            
-              <div>                     
-                    <table class="table table-striped table-bordered table-condensed table-hover">
-                        <thead>
-                            <tr>
-                                <th>Inventario</th>
-                                <th>Ubicacion</th>
-                                <th>Descripción bien</th>
-                                <th>Costo incorporacion</th>
-                                <th>Estado</th>
-                                <th>Usuario</th>
-                                <th>Movimiento</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($inventariables as $key => $inventariable)
-                            <tr>
-                                <td>
-                                    {{ $inventariable->grupo_id }} . 0{{ $inventariable->subgrupo_id }} . {{ $inventariable->especie_id }} . 0{{ $key+1 }}
-                                </td>
-                                <td>0{{ $inventariable->ubicacion_id }} . 0{{ $inventariable->sububicacion_id }}</td>
-                                <td>{{ $inventariable->descripcionbien }}</td>
-                                <td>{{ $inventariable->costo_incorporacion }}</td>
-                                <td>
-                                    @if($inventariable->estado_conservacion == 0)<p>B</p> @endif     
-                                    @if($inventariable->estado_conservacion == 1)<p>R</p> @endif
-                                    @if($inventariable->estado_conservacion == 2)<p>M</p> @endif
-                                </td>
-                                <td>{{ $inventariable->usuario }}</td>
-                                <td> 
-
-                                     @if ($inventariable->movimiento_id == 2)
-
-                                     <i class="fa fa-times"> Dado baja</i>
-
-                                    @else
-
-
-                                    <a href="/inventariables/{{$inventariable->id}}/traslado" class="btn-default btn-sm" style='width:80px; height:30px; font-size:14px'><i class="fa fa-truck"></i>  Trasladar</a>
-                                    </br>
-                                    <a href="/inventariables/{{$inventariable->id}}/darbaja" class="btn-default btn-sm" style='width:80px; height:30px; font-size:14px'><i class="fa fa-arrow-down"></i>  Dar baja</a>
-
-                                    @endif                       
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>     
-
-
-
-        
 
               
 

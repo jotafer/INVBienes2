@@ -4,7 +4,7 @@
 
 
             <div class="panel panel-primary">
-                <div class="panel-heading">Formulario de Baja de bienes</div>
+                <div class="panel-heading">Formulario de Baja de bienes:    {{ $inventariable->descripcionbien }}</div>
 
                 <div class="panel-body">
 
@@ -124,12 +124,17 @@
                                     <tr>
                                         <td><label for="destino">Destino:</label></td>
                                         <td><select name="ubicacion_id" class="form-control" id="select-ubicacion">
-                                    <option value="">Seleccione Destino</option>
-                                       @foreach ($ubicaciones as $ubicacion)
-                                            <option value="{{$ubicacion->id}}">{{$ubicacion->id}} - {{$ubicacion->dependenciamunicipal}}</option>
-                                        @endforeach
-                                </select></td>
+                                                    <option value="">Seleccione Destino</option>
+                                                            @foreach ($ubicaciones as $ubicacion)
+                                                    <option value="{{$ubicacion->id}}">{{$ubicacion->id}} - {{$ubicacion->dependenciamunicipal}}</option>
+                                                            @endforeach
+                                                </select></td>
                                     </tr>
+                                        <td><label>Sub destino:</label></td>
+                                        <td><select name="sububicacion_id" class="form-control" id="select-sububicacion">
+                                                <option value="">Seleccione Sub destino</option>
+                                            </select>
+                                        </td>
                                 </table>
                                  </div>
 
@@ -150,6 +155,7 @@
     <script src="/js/users/inventariables/jquery-ui.js"></script>
     <script src="/js/users/grupos/index.js"></script>
     <script src="/js/admin/proveedores/edit.js"></script>
+    <script src="/js/users/ubicaciones/index.js"></script>
 
     <script type="text/javascript">
 

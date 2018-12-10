@@ -31,7 +31,7 @@
                         <h3 class="panel-title">Productos en Alta</h3>  
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>Inventario</th>
@@ -50,7 +50,7 @@
                                 {{ $alta->grupo_id }}.0{{ $alta->subgrupo_id }}.{{ $alta->especie_id }}
                                     </a>
                                 </th>
-                                <th>{{ $alta->ubicacion_id }}</th>
+                                <th>0{{ $alta->ubicacion_id }} . 0{{ $alta->sububicacion_id }}</th>
                                 <th>{{ $alta->descripcionbien }}</th>
                                 <th>{{ $alta->costo_incorporacion }}</th>
                                 <th>
@@ -59,7 +59,7 @@
                                     @if($alta->estado_conservacion == 2)<p>M</p> @endif
                                 </th>
                                 <th> 
-                                    <a href="/inventariables/{{$alta->id}}/darbaja" class="btn btn-primary btn-xs" style='width:80px; height:35px; font-size:14px'>Dar baja</a>
+                                    <a href="/inventariables/{{$alta->id}}/darbaja" class="btn btn-primary btn-xs" style='width:90px; height:30px; font-size:14px'><i class="fa fa-arrow-down"></i>  Dar baja</a>
                                 </th>
                             </tr>
                             @endforeach
@@ -77,7 +77,7 @@
                         <h3 class="panel-title">Productos en Traslado</h3>  
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>Inventario</th>
@@ -96,7 +96,7 @@
                                 {{ $traslado->grupo_id }}.0{{ $traslado->subgrupo_id }}.{{ $traslado->especie_id }}
                                     </a>
                                 </th>
-                                <th>{{ $traslado->ubicacion_id }}</th>
+                                <th>0{{ $traslado->ubicacion_id }} . 0{{ $traslado->sububicacion_id }}</th>
                                 <th>{{ $traslado->descripcionbien }}</th>
                                 <th>{{ $traslado->costo_incorporacion }}</th>
                                 <th>
@@ -105,7 +105,7 @@
                                     @if($traslado->estado_conservacion == 2)<p>M</p> @endif
                                 </th>
                                 <th> 
-                                    <a href="/inventariables/{{$traslado->id}}/darbaja" class="btn btn-primary btn-xs" style='width:80px; height:35px; font-size:14px'>Dar baja</a>
+                                    <a href="/inventariables/{{$traslado->id}}/darbaja" class="btn btn-primary btn-xs" style='width:90px; height:30px; font-size:14px'><i class="fa fa-arrow-down"></i>  Dar baja</a> 
                                 </th>
                             </tr>
                             @endforeach

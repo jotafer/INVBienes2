@@ -31,13 +31,17 @@
 
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>Inventario</th>
                                 <th>Descripción especie</th>
                                 <th>Movimiento</th>
+                            @if (auth()->user()->role == 0)
+                                <th>Opciones</th>
+                            @endif
                             </tr>
+
                         </thead>
                         <tbody id="dashboard_especies_alta"></tbody>
                             @foreach ($altaesps as $altaesp)
@@ -63,10 +67,27 @@
                                 <th>{{ $altaesp->descripcion }}</th>
                                 <th>
                                     <a href="/nuevaalta/{{$altaesp->id}}" class="btn btn-primary btn-sm">
-                                    <span class="glyphicon glyphicon-plus"></span> Nueva alta</button>            
-
+                                    <span class="glyphicon glyphicon-plus"></span> Nueva alta</button>          
                                 </th>
 
+                                @if (auth()->user()->role == 0)
+                                <th>
+
+                                    <a href="/altaesp/{{ $altaesp->id }}" class="btn btn-sm primary" title="Editar">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    @if ($altaesp->trashed())
+                                    <a href="/altaesp/{{ $altaesp->id }}/restaurar" class="btn btn-sm-succes" title="Restaurar">
+                                        <span class="glyphicon glyphicon-repeat"></span>
+                                    </a>
+                                    @else
+                                    <a href="/altaesp/{{ $altaesp->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                    @endif  
+                                </th>
+
+                                @endif
                             </tr>
                             @endforeach
                     </table>

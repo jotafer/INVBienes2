@@ -110,7 +110,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="/invespecies"><i class="fa fa-circle-o"></i> Nueva alta</a></li>
-                <li><a href="/proveedores"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="/proveedoresespecie"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -144,8 +144,7 @@
             @endif
             
              <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
+                <li><a href="/generarplaqueta"><i class="fa fa-print" aria-hidden="true"></i> <span>Generar plaqueta</span>
                 <small class="label pull-right bg-red">PDF</small>
               </a>
             </li>

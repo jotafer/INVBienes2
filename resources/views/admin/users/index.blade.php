@@ -25,7 +25,7 @@
                         </div>
                     @endif    
                             
-                 <form action="" method="POST">
+                 <form action="" name="formulario" method="POST">
                     {{ csrf_field() }}
 
                         <div class="form-group">
@@ -39,11 +39,18 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Contraseña</label>
+                            <label for="email">Contraseña <em> (Mínimo 8 caracteres)</em></label></label>
                             <input type="text" name="password" class="form-control" value="{{ old('password', str_random(8)) }}">
                         </div>
 
                         <div class="form-group">
+
+                        <div id="mensaje"></div>
+
+                        <div class="form-group">
+                            <label for="email">Confirmar contraseña </label>
+                            <input type="text" name="password2" class="form-control" onkeyup="comprobarClave();"/>
+                        </div>                            
 
                         <label>Tipo de usuario</label>
                                 <select name="role" class="form-control">
@@ -52,12 +59,12 @@
                                 </select>
                         </div>
 
-                            <div class="form-group">
-                            <button class="btn btn-success">Registrar Usuario</button>
-                            </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="Guardar" id="guardar">
+                        </div>
                     </form> 
 
-                    <table class="table table-bordered">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th>E-mail</th>
@@ -98,4 +105,29 @@
             </div>
         </div>
  
+@endsection
+
+@section('scripts')
+
+
+    <script type="text/javascript">
+
+    function comprobarClave(){
+        var password = document.formulario.password.value;
+        var password2 = document.formulario.password2.value;
+    
+     if (password != password2) {
+                                        document.getElementById("mensaje").innerHTML = "Las contraseñas no coinciden.";
+                                        document.getElementById("guardar").disabled=true;
+                                } else {
+                                        document.getElementById("mensaje").innerHTML = "";
+                                        document.getElementById("guardar").disabled=false;
+                                }
+                        }
+
+    </script>
+
+
+    
+
 @endsection

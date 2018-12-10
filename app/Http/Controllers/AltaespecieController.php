@@ -64,6 +64,15 @@ class AltaespecieController extends Controller
         return view('altas.edit')->with(compact('altaesp', 'proveedores', 'inventariables','ubicaciones'));
     }
 
+    public function editp($id)
+    {
+    
+        $altaesp = Altaesp::findOrFail($id);
+        $proveedores = $altaesp->proveedores;
+        $inventariables =$altaesp->inventariables;
+        return view('altas.editp')->with(compact('altaesp', 'proveedores', 'inventariables','ubicaciones'));
+    }
+
     public function nuevaalta($id)
     {
     
@@ -105,7 +114,7 @@ class AltaespecieController extends Controller
 
     public function delete($id)
     {
-        Alta::find($id)->delete();
+        Altaesp::find($id)->delete();
 
         return back()->with('notification','La alta ha sido eliminada.');
         
@@ -113,7 +122,7 @@ class AltaespecieController extends Controller
 
     public function restore($id)
     {
-        Alta::withTrashed()->find($id)->restore();
+        Altaesp::withTrashed()->find($id)->restore();
 
         return back()->with('notification','La alta se ha restaurado correctamente.');
         

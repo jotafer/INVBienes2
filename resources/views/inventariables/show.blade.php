@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<th>Destino</th>
-					<td id="alta_destino">{{ $inventariable->ubicacion_id }}</td>
+					<td id="alta_destino">0{{ $inventariable->ubicacion_id }} . 0{{ $inventariable->sububicacion_id }}</td>
 				</tr>
 				<tr>
 					<th>Observaciones</th>

@@ -5,6 +5,7 @@ namespace SisInventario\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use SisInventario\Http\Controllers\Controller;
 use SisInventario\User;
+use Validator;
 
 class UserController extends Controller{
 
@@ -61,7 +62,7 @@ class UserController extends Controller{
     {
         $rules = [
             'name' => 'required|string|max:255',
-            'password' => 'nullable|min:6'
+            'password' => 'required|min:6'
         ];
          $messages = [
             'name.required' => 'Es necesario ingresar el nombre de usuario.', 

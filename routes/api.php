@@ -17,6 +17,8 @@ Route::get('/grupo/{id}/subgrupo', 'Admin\SubgrupoController@byGrupo');
 
 Route::get('/subgrupo/{id}/especie', 'Admin\EspecieController@bySubgrupo');
 
+Route::get('/ubicacion/{id}/sububicacion', 'Admin\SububicacionController@byUbicacion');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

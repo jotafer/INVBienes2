@@ -30,7 +30,7 @@
         <a href="#"><b>INV</b>Bienes</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Ingrese al sistema</p>
+        <p class="login-box-msg">Ingrese sus datos de Acceso</p>
         <form action="../../index2.html" method="post">
           <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="Email">

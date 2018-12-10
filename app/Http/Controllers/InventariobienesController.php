@@ -37,8 +37,9 @@ class InventariobienesController extends Controller
         return Especie::where('subgrupo_id', $id)->get();
     }
     
-    public function index()
+    public function index(Request $request)
     {
+
         $grupos = Grupo::all();
         $subgrupos = Subgrupo::all();
         $especies = Especie::all();
@@ -47,7 +48,19 @@ class InventariobienesController extends Controller
         $bajas = Inventariable::where('movimiento_id', 2)->paginate(4);
         $traslados = Inventariable::where('movimiento_id', 3)->paginate(4);
         return view('inventariobienes')->with(compact('altas', 'traslados','bajas'));
+    }
 
+    public function plaqueta(Request $request)
+    {
+        $ubicaciones = Ubicacion::all();
+        $ubicacion_id = $request->get('ubicacion_id');
+        //$sububicacion_id = $request->get('sububicacion_id');
+
+        $inventariables = Inventariable::orderBy('id', 'DESC')
+            ->ubicacion_id($ubicacion_id)
+            ->paginate(3); 
+
+        return view('generarplaqueta')->with(compact('inventariables','ubicaciones'));
     }
 
    

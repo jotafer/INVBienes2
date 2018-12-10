@@ -116,11 +116,12 @@
                                     <tr>
                                         <td><label for="destino">Destino:</label></td>
                                         <td><select name="ubicacion_id" class="form-control" id="select-ubicacion">
-                                    <option value="">Seleccione Destino</option>
-                                        @foreach ($ubicaciones as $ubicacion)
-                                            <option value="{{$ubicacion->id}}">{{$ubicacion->codigo}} - {{$ubicacion->dependenciamunicipal}}</option>
-                                        @endforeach
-                                </select></td>
+                                                    <option value="">Seleccione Destino</option>
+                                                            @foreach ($ubicaciones as $ubicacion)
+                                                    <option value="{{$ubicacion->id}}">{{$ubicacion->codigo}} - {{$ubicacion->dependenciamunicipal}}</option>
+                                                            @endforeach
+                                            </select></td>
+                                        <td>asd</td>
                                     </tr>
                                 </table>
                                  </div>

@@ -30,7 +30,7 @@
         <a href="#"><b>INV</b>Bienes</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Ingrese al sistema</p>
+        <p class="login-box-msg">Ingrese sus datos de acceso</p>
 
 
         <form method="POST" action="{{ route('login') }}">
@@ -59,27 +59,31 @@
           </div>
          
           <div class="row">
-            
-
-            
+            <div class="col-xs-8">
+              <div class="checkbox icheck">
+                <label>
+                  <input type="checkbox"> Recordar
+                </label>
+              </div>
+            </div><!-- /.col -->
             <div class="col-xs-4">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
             </div><!-- /.col -->
           </div>
         </form>
 
-     
-       
+        
+        
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="js/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- iCheck -->
-    <script src="plugins/iCheck/icheck.min.js"></script>
+    <script src="js/icheck.min.js"></script>
     <script>
       $(function () {
         $('input').iCheck({

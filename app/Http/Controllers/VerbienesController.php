@@ -104,13 +104,15 @@ class VerbienesController extends Controller
             'descripcionbien' => 'nullable|string|max:255',
             'preciounitario' => 'required|numeric',
             'observaciones' => 'string|max:255',
-            'ubicacion_id' => 'required'
+            'ubicacion_id' => 'required',
+            'sububicacion_id' => 'required'
         ];
 
         $messages = [
             'fecha.required' => 'Es necesario ingresar la fecha del traslado.',
             'estado_conservacion.required' => 'Es necesario ingresar el estado del producto.',
-            'ubicacion_id.required' => 'Es necesario ingresar el destino del producto.'
+            'ubicacion_id.required' => 'Es necesario ingresar el destino del producto.',
+            'sububicacion_id' => 'Es necesario ingresar la sub ubicacion producto.'
         ];
         $this->validate($request, $rules, $messages);
 
@@ -119,6 +121,7 @@ class VerbienesController extends Controller
         $inventariable->fecha = $request->input('fecha');
         $inventariable->estado_conservacion = $request->input('estado_conservacion');
         $inventariable->ubicacion_id = $request->input('ubicacion_id');
+        $inventariable->sububicacion_id = $request->input('sububicacion_id');
 
         $inventariable->save();
         return back()->with('notification','Movimiento registrado exitosamente.');
@@ -136,13 +139,15 @@ class VerbienesController extends Controller
 
             'descripcionbien' => 'nullable|string|max:255',
             'observaciones' => 'string|max:255',
-            'ubicacion_id' => 'required'
+            'ubicacion_id' => 'required',
+            'sububicacion_id' => 'required'
         ];
 
         $messages = [
             'fecha.required' => 'Es necesario ingresar la fecha del traslado.',
             'estado_conservacion.required' => 'Es necesario ingresar el estado del producto.',
-            'ubicacion_id.required' => 'Es necesario ingresar el destino del producto.'
+            'ubicacion_id.required' => 'Es necesario ingresar el destino del producto.',
+            'sububicacion_id' => 'Es necesario ingresar la sub ubicacion producto.'
         ];
         $this->validate($request, $rules, $messages);
 
@@ -151,6 +156,7 @@ class VerbienesController extends Controller
         $inventariable->fecha = $request->input('fecha');
         $inventariable->estado_conservacion = $request->input('estado_conservacion');
         $inventariable->ubicacion_id = $request->input('ubicacion_id');
+        $inventariable->sububicacion_id = $request->input('sububicacion_id');
 
         $inventariable->save();
         return back()->with('notification','Baja registrada exitosamente.');
