@@ -11,25 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    //$pdf = resolve('dompdf.wrapper');
 
-    //$pdf = PDF::loadHTML('<h1>test</h1>');
-
-    //return $pdf->stream();
-});
 
 Auth::routes();
+
+Route::get('/logout', function(){
+   Auth::logout();
+   return Redirect::to('login');
+});
 
 Route::get('/home', 'HomeController@index');
 Route::get('/inventariobienes', 'InventariobienesController@index');
 Route::get('/generarplaqueta', 'InventariobienesController@plaqueta')->name('generarplaqueta');
+Route::get('/generarplaquetaprueba', 'InventariobienesController@plaquetaprueba')->name('generarplaquetaprueba');
+
+
+
+
 //Route::get('homeesp', 'HomeespController@index')->name('homeesp.index');
 Route::get('inventarioespecies', 'HomeespController@index')->name('inventarioespecies');
 
 Route::get('invespecies', 'HomeespController@nuevaalta')->name('invespecies');
 
 Route::get('proveedoresespecie', 'ProveedorController@proveedoresespecie')->name('proveedoresespecie');
+
+
 
 	// Altas Especies
 	Route::get('/altas/altaespecie', 'AltaespecieController@index')->name('altaespecie');

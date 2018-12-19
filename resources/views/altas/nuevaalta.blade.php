@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-
+<link href="{{ URL::asset('css/estilos.css') }}" rel="stylesheet" type="text/css"/>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="modalEditProveedor">
   <div class="modal-dialog" role="document">
@@ -30,7 +30,7 @@
 </div> 
 
             <div class="panel panel-primary">
-                <div class="panel-heading">{{ $altaesp->descripcion }}</div>
+                <div class="panel-heading">Formulario de alta de bienes: {{ $altaesp->descripcion }}</div>
 
                 <div class="panel-body">
 
@@ -52,89 +52,91 @@
                     @endif    
 
 
-
-
-<div class="col-md-12">
-<h3>Inventariables</h3>
-</br>
-<form action="/inventariables" method="POST" class="form-inline">
+    <form action="/inventariables" method="POST">
     {{ csrf_field() }}
 
-<table>
-<tbody>
+                <label> Descripción bien:</label>
+                <input type="text" name="descripcionbien" class="form-control" value="{{ old('descripcionbien') }}">
+
+                <label> Proveedor: <a href="/proveedores/{{$altaesp->id}}"> Listado de proveedores</a></label> 
+                <select name="proveedor" class="form-control">
+                                        <option value="">Seleccione Proveedor</option>
+                                            @foreach ($proveedores as $proveedor)
+                                        <option value="{{$proveedor->nombre}}">{{$proveedor->nombre}}</option>
+                                            @endforeach
+                                        </select>
+
+<table cellspacing="10" cellpadding="10" width="100%">
 <tr>
-<td><label>Proveedor:</label></td>
-<td><select class="form-control" name="proveedor">
-<option value="">Seleccione Proveedor</option>
-@foreach ($proveedores as $proveedor)
-<option value="{{$proveedor->nombre}}">{{$proveedor->nombre}}</option>
-@endforeach</select></td>
-<td>&nbsp&nbsp&nbsp<label>Precio unitario:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-<td>
-        <input type="number" min="1" max="99999999" name="costo_incorporacion" class="form-control " value="{{ old('costo_incorporacion') }}">
-</td>
-<td></td>
+  
+ 
+<td style="padding:0 0px 0 0px;"><label>Orden de compra:</label></td>
+<td style="padding:0 0px 0 15px;"><label>Factura:</label></td>
+<td style="padding:0 0px 0 15px;"><label>Fecha:</label></td>
+<td style="padding:0 0px 0 15px;"><label>Precio unitario:</label></td>
+
+  
 </tr>
+
+<td style="padding:0 0px 0 0px;"><input type="text" name="ordendecompra" class="form-control" value="{{ old('ordendecompra') }}"></td>
+<td style="padding:0 0px 0 15px;"><input type="number" min="1" max="999999" name="factura" class="form-control" value="{{ old('factura') }}"></td>
+<td style="padding:0 0px 0 15px;"><input type="text" id="datepicker" name="fecha" class="form-control"></td>
+<td style="padding:0 0px 0 15px;"><input type="number" min="1" max="99999999" name="costo_incorporacion" class="form-control" value="{{ old('costo_incorporacion') }}"><td>
+
+  
+</table>
+
+<table cellspacing="10" cellpadding="10" width="100%">
 <tr>
-<td><label>Orden de compra:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-<td><input type="text" name="ordendecompra" class="form-control" value="{{ old('ordendecompra') }}"></td>
-<td>&nbsp&nbsp&nbsp<label>Estado:</label></td>
-                                        <td><select name="estado_conservacion" class="form-control">
-                                            <option value="">Seleccione Estado</option>
+  
+ 
+<td style="padding:0 0px 0 0px;"><label>Destino:</label></td>
+<td style="padding:0 0px 0 15px;"><label>Sub destino:</label></td>
+
+
+  
+</tr>
+
+<td style="padding:0 0px 0 0px;">
+                <select name="ubicacion_id" class="form-control" id="select-ubicacion">
+                                <option value="">Seleccione Destino</option>
+                                        @foreach ($ubicaciones as $ubicacion)
+                                <option value="{{$ubicacion->id}}">{{$ubicacion->dependenciamunicipal}}</option>
+                                        @endforeach
+                </select>
+
+
+</td>
+
+
+<td style="padding:0 0px 0 15px;">
+                <select name="sububicacion_id" class="form-control" id="select-sububicacion">
+                                <option value="">Seleccione Sub destino</option>
+                </select>
+
+</td>
+</table>
+
+<label> Estado conservación:</label>
+<select name="estado_conservacion" class="form-control">
+                                                <option value="">Seleccione Estado</option>
                                                 <option value="0">Bueno</option>
                                                 <option value="1">Regular</option>
                                                 <option value="2">Malo</option>
                                             </select>
-                                        </td>
-</tr>
-<tr>
-<td><label>Factura:</label></td>
-<td><input type="number" min="1" max="9999" name="factura" class="form-control" value="{{ old('factura') }}"></td>
-<td>&nbsp&nbsp&nbsp<label>Destino:</label></td>
-<td><select name="ubicacion_id" class="form-control" id="select-ubicacion">
-                                    <option value="">Seleccione Destino</option>
-                                        @foreach ($ubicaciones as $ubicacion)
-                                            <option value="{{$ubicacion->id}}">{{$ubicacion->dependenciamunicipal}}</option>
-                                        @endforeach
-                                </select></td>
 
-</tr>
-<tr>
-<td><label>Fecha:</label></td>
-<td><input type="text" id="datepicker" name="fecha" class="form-control"></td>
-<td>&nbsp&nbsp&nbsp<label>Sub Destino:&nbsp&nbsp&nbsp</label></td>
-<td><select name="sububicacion_id" class="form-control" id="select-sububicacion">
-                                                <option value="">Seleccione Sububicacion</option>
-    </select>
-</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>&nbsp&nbsp&nbsp<label>Descripcion:&nbsp&nbsp&nbsp</label></td>
-<td><input class="form-control" name="descripcionbien" type="text" value="{{ old('descripcionbien') }}" /></td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<div class="form-group">
-<div class="form-group"><input id="grupoSeleccionado" name="gruposel" type="hidden" /> <input id="subgrupoSeleccionado" name="subgruposel" type="hidden" /> <input id="especieSeleccionado" name="especiesel" type="hidden" /> <input id="codificacion" name="codificacion" type="hidden" /></div>
-<input type="hidden" name="altaesp_id" value="{{ $altaesp->id }}">
-<input type="hidden" name="grupo_id" value="{{ $altaesp->grupo_id }}">
-<input type="hidden" name="subgrupo_id" value="{{ $altaesp->subgrupo_id }}">
-<input type="hidden" name="especie_id" value="{{ $altaesp->especie_id }}">
-<input type="hidden" name="usuario" value="{{ Auth::user()->name }}">
-<div class="form-group"><input class="btn btn-success" type="submit" value="Guardar" /></div>
-</br>
-</br>
-</div>
-</form>
+                <input type="hidden" name="altaesp_id" value="{{ $altaesp->id }}">
+                <input type="hidden" name="grupo_id" value="{{ $altaesp->grupo_id }}">
+                <input type="hidden" name="subgrupo_id" value="{{ $altaesp->subgrupo_id }}">
+                <input type="hidden" name="especie_id" value="{{ $altaesp->especie_id }}">
+                <input type="hidden" name="usuario" value="{{ Auth::user()->name }}">
+
+                <center><button class="btn btn-success">Dar alta</button></center>
 
 
-            <div>                     
+    </form>
+
+
                     <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>
@@ -196,8 +198,6 @@
     <script src="/js/admin/proveedores/edit.js"></script>
 
     <script type="text/javascript">
-
-   
 
     $(function() {
         $( "#datepicker" ).datepicker({

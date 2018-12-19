@@ -24,14 +24,17 @@ class Inventariable extends Model
         'subgrupo_id' => 'required',
         'especie_id' => 'required',
 
-        'descripcionbien' => 'nullable|string|max:255',
+        'descripcionbien' => 'string|max:255',
         'costo_incorporacion' => 'required|numeric',
         'observaciones' => 'string|max:255',
         'ubicacion_id' => 'required',
-        'subicacion_id' => 'required'
+        'subicacion_id' => 'required',
+
+        'estado_conservacion' => 'required'
     ];
 
     public static $messages = [
+        'descripcionbien.required' => 'Es necesario ingresar la descripcion del bien.',
     	'fecha.required' => 'Es necesario ingresar la fecha de adquisicion.',
     	'proveedor.required' => 'Es necesario ingresar el proveedor del bien.',
         'ordendecompra.required' => 'Es necesario ingresar el orden de compra del bien.',
@@ -41,13 +44,16 @@ class Inventariable extends Model
         'grupo_id.required' => 'Es necesario ingresar el grupo del bien.',
         'subgrupo_id.required' => 'Es necesario ingresar el subgrupo del bien.',
         'especie_id.required' => 'Es necesario ingresar la especie del bien.',
+        'estado_conservacion.required' => 'Es necesario ingresar el estado de conservacion.',
 
         'cantidad.required' => 'Es necesario ingresar la cantidad del bien.',
         'descripcionbien.required' => 'Es necesario ingresar la descripcion del bien.',
         'costo_incorporacion.required' => 'Es necesario ingresar el costo del bien.',
         'estado_conservacion.required' => 'Es necesario ingresar estado del bien.',
         'ubicacion_id.required' => 'Es necesario ingresar la ubicacion a la que pertenece.',
-        'ubicacion_id.required' => 'Es necesario ingresar la sub ubicacion a la que pertenece.'
+        'sububicacion_id.required' => 'Es necesario ingresar la sub ubicacion a la que pertenece.',
+
+        'estado_conservacion.required' => 'Es necesario ingresar el estado de conservacion del bien.',
 
     ];
 
@@ -77,5 +83,15 @@ class Inventariable extends Model
         if($sububicacion_id) 
             return $query->where('sububicacion_id', 'LIKE', "%$sububicacion_id%");   
     } 
+
+
+    public function scopeSearch($query, $u){
+            return $query->where('ubicacion_id', 'like', "%" .$u. '%');   
+    }
+
+    public function scopeSearch2($query, $s){
+            return $query->where('sububicacion_id', 'like', "%" .$s. '%');   
+    } 
+
 
 }

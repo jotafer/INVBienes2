@@ -92,6 +92,10 @@
                             @endforeach
                     </table>
 
+                    <div class="text-center">
+                        {!! $altaesps->links(); !!}
+                    </div>
+
                    
 
                 </div>

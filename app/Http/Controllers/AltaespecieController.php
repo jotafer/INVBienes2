@@ -40,7 +40,7 @@ class AltaespecieController extends Controller
         $grupos = Grupo::all();
         $subgrupos = Subgrupo::all();
         $especies = Especie::all();
-        $altasesp = Altaesp::withTrashed()->get();
+        $altasesp = Altaesp::withTrashed()->paginate(7);
         return view('/altas/altaespecie')->with(compact('grupos','subgrupos','especies'));
     }
 

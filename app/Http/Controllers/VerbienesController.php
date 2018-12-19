@@ -36,6 +36,7 @@ class VerbienesController extends Controller
     
     public function index()
     {
+
         $grupos = Grupo::all();
         $ubicaciones = Ubicacion::all();
         $subgrupos = Subgrupo::all();

@@ -145,7 +145,7 @@
             
              <li>
               <li><a href="/generarplaqueta"><i class="fa fa-print" aria-hidden="true"></i> <span>Generar plaqueta</span>
-                <small class="label pull-right bg-red">PDF</small>
+                <small class="label pull-right bg-red">Print</small>
               </a>
             </li>
             <li>

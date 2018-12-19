@@ -137,7 +137,8 @@
                                     @if($baja->estado_conservacion == 1)<p>R</p> @endif
                                     @if($baja->estado_conservacion == 2)<p>M</p> @endif
                                 </th>
-                                <th> 
+                                <th>
+                                    <i class="fa fa-times"> Dado baja</i> 
                                   
                                 </th>
                             </tr>

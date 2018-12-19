@@ -52,7 +52,7 @@
                                 <table>
                                     <tr>
                                         <td><label for="proveedor">Fecha:&nbsp&nbsp</label></td>
-                                        <td><input class="form-control" type="date" placeholder="Date" name="fecha"></td>
+                                        <td><input type="text" id="datepicker" class="form-control" name="fecha"></td>
                                     </tr>
                                     <tr>
                                         <td></td>

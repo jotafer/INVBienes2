@@ -52,16 +52,27 @@ class InventariobienesController extends Controller
 
     public function plaqueta(Request $request)
     {
+        $u = $request->input('u');
+        $s = $request->input('s');
+        $f = $request->input('f');
+
+        $ubiselecc = $request->input('ubiselecc');
+        $sububiselecc = $request->input('sububiselecc');
+
         $ubicaciones = Ubicacion::all();
         $ubicacion_id = $request->get('ubicacion_id');
+        $sububicacion_id = $request->get('sububicacion_id');
         //$sububicacion_id = $request->get('sububicacion_id');
 
-        $inventariables = Inventariable::orderBy('id', 'DESC')
+        $inventariables = Inventariable::latest()
             ->ubicacion_id($ubicacion_id)
-            ->paginate(3); 
+            ->search($s)
+            ->paginate(12);
 
-        return view('generarplaqueta')->with(compact('inventariables','ubicaciones'));
+
+        return view('generarplaqueta', compact('inventariables','ubicaciones','u','s','f'));
     }
+
 
    
 

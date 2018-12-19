@@ -47,7 +47,7 @@
 					<td id="alta_cantidad">{{ $inventariable->descripcionbien }}</td>
 				</tr>
 				<tr>
-					<th>Destino</th>
+					<th>Ubicación</th>
 					<td id="alta_destino">0{{ $inventariable->ubicacion_id }} . 0{{ $inventariable->sububicacion_id }}</td>
 				</tr>
 				<tr>

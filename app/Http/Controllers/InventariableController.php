@@ -14,6 +14,13 @@ class InventariableController extends Controller
         $Inventariables = Inventariable::all();
         return view('home')->with(compact('Inventariables'));
     }
+
+
+
+    public function plaqueta()
+    {
+        return view('pdf.generarplaquetaprueba');
+    }
       
 
 

@@ -33,21 +33,12 @@
 
 
                     <div class="form-group">
-                        <label for="nombre">Nombre Grupo</label>
-                             <select name="nombre" class="form-control" id="select-nombre">
-                                <option value="">Seleccione nombre</option>
-                                <option value="Vehículos">Vehículos</option>
-                                <option value="Maquinas y equipos">Maquinas y equipos</option>
-                                <option value="Muebles y enseres">Muebles y enseres</option>
-                                <option value="Obras de arte">Obras de arte</option>
-                                <option value="Implementos de cocina y vajilleria">Implementos de cocina y vajilleria</option>
-                                <option value="Ganado">Ganado</option>
-                                <option value="Bibliotecas">Bibliotecas</option>
-                            </select>
+                        <label>Nombre:</label>
+                        <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
                     </div>
 
                         <div class="form-group">
-                            <label for="codigo">Codigo</label>
+                            <label for="codigo">Codigo:</label>
                              <select name="codigo" class="form-control" id="select-grupo">
                                 <option value="">Seleccione codigo</option>
                                 <option value="01">01</option>

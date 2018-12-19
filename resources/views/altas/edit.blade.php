@@ -67,8 +67,7 @@
         </br>
         </br>
 
-            <div class="row">
-                <div class="col-md-8">
+
                     <p>Proveedores</p>
                     <form action="/proveedores" method="POST" class="form-inline">
                         {{ csrf_field() }}
@@ -106,11 +105,11 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
+        
 
 
             
-              <div>                     
+                                
                     <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr>

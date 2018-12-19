@@ -44,7 +44,7 @@
                                     </tr>
                                     <tr>
                                         <td><label for="fecha">Fecha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label></td>
-                                        <td><input type="text" id="datepicker" name="fecha"></td>
+                                        <td><input type="text" id="datepicker" class="form-control" name="fecha"></td>
                                     </tr>
                                     <tr>
                                          <td><label for="estado_conservacion">Estado conservacion:</label></td>
@@ -158,7 +158,10 @@
     <script type="text/javascript">
 
     $(function() {
-        $( "#datepicker" ).datepicker({  maxDate: new Date });
+        $( "#datepicker" ).datepicker({
+            dateFormat: 'dd-mm-yy',  
+            maxDate: new Date 
+        });
     });
 
     </script>
