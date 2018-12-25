@@ -151,8 +151,8 @@
               </a>
             </li>
             <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
+              <a href="/infoayuda">
+                <i class="fa fa-info-circle"></i> <span>Info ayuda</span>
                 <small class="label pull-right bg-yellow">IT</small>
               </a>
             </li>

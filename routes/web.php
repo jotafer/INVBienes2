@@ -21,7 +21,8 @@ Route::get('/logout', function(){
 });
 
 Route::get('/home', 'HomeController@index');
-Route::get('/inventariobienes', 'InventariobienesController@index');
+Route::get('/infoayuda', 'HomeController@infoayuda');
+Route::get('/inventariobienes', 'InventariobienesController@index')->name('inventariobienes');
 Route::get('/generarplaqueta', 'InventariobienesController@plaqueta')->name('generarplaqueta');
 Route::get('/generarplaquetaprueba', 'InventariobienesController@plaquetaprueba')->name('generarplaquetaprueba');
 
@@ -41,6 +42,11 @@ Route::get('proveedoresespecie', 'ProveedorController@proveedoresespecie')->name
 	Route::get('/altas/altaespecie', 'AltaespecieController@index')->name('altaespecie');
 
 	Route::post('/altas/altaespecie', 'AltaespecieController@store');
+
+	Route::get('/altas/{id}/edit', 'InventariableController@edita');
+	Route::post('/altas/{id}/edit', 'InventariableController@updatea');
+	Route::get('/altas/{id}/eliminar', 'InventariableController@deletea');
+
 	Route::get('/altas/{id}/nuevaalta', 'AltaespecieController@nuevaalta');
 	Route::post('/altabien/{id}/baja', 'AltaespecieController@baja');
 
@@ -68,7 +74,15 @@ Route::get('proveedoresespecie', 'ProveedorController@proveedoresespecie')->name
 
 	Route::get('/bajas/bajabien', 'BajaController@index')->name('bajabien');
 
+	Route::get('/bajas/{id}/edit', 'InventariableController@editb');
+	Route::post('/bajas/{id}/edit', 'InventariableController@updateb');
+	Route::get('/bajas/{id}/eliminar', 'InventariableController@deleteb');
+
 	Route::get('/traslados/trasladobien', 'TrasladoController@index')->name('trasladobien');
+
+	Route::get('/traslados/{id}/edit', 'InventariableController@editt');
+	Route::post('/traslados/{id}/edit', 'InventariableController@updatet');
+	Route::get('/traslados/{id}/eliminar', 'InventariableController@deletet');
 
 	// Ver bienes y Movimientos inventario
 

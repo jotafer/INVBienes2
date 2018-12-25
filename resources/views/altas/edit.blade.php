@@ -120,13 +120,24 @@
                                 <th>Estado</th>
                                 <th>Usuario</th>
                                 <th>Movimiento</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($inventariables as $key => $inventariable)
                             <tr>
                                 <td>
-                                    {{ $inventariable->grupo_id }} . 0{{ $inventariable->subgrupo_id }} . {{ $inventariable->especie_id }} . 0{{ $key+1 }}
+            @if($inventariable->subgrupo_id == 3) <p>{{ $inventariable->grupo_id }} . 01 . {{ $inventariable->especie_id }} . 0{{ $key+1 }}</p> 
+
+            @elseif($inventariable->subgrupo_id == 4) <p>{{ $inventariable->grupo_id }} . 02 . {{ $inventariable->especie_id }} . 0{{ $key+1 }}</p> 
+
+            @elseif($inventariable->subgrupo_id == 5) <p>{{ $inventariable->grupo_id }} . 03 . {{ $inventariable->especie_id }}. 0{{ $key+1 }}</p> 
+
+            @elseif($inventariable->subgrupo_id == 6) <p>{{ $inventariable->grupo_id }} . 01 . {{ $inventariable->especie_id }}. 0{{ $key+1 }}</p>
+
+            @elseif($inventariable->subgrupo_id == 7) <p>{{ $inventariable->grupo_id }} . 02 . {{ $inventariable->especie_id }}. 0{{ $key+1 }}</p>  
+
+            @else {{ $inventariable->grupo_id }} . 0{{ $inventariable->subgrupo_id }} . {{ $inventariable->especie_id }} . 0{{ $key+1 }} @endif
                                 </td>
                                 <td>0{{ $inventariable->ubicacion_id }} . 0{{ $inventariable->sububicacion_id }}</td>
                                 <td>{{ $inventariable->descripcionbien }}</td>
@@ -152,6 +163,8 @@
 
                                     @endif                       
                                 </td>
+
+                         
                             </tr>
                             @endforeach
                         </tbody>

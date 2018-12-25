@@ -3,6 +3,7 @@
 @section('contenido')
 
 
+
             <div class="panel panel-primary">
                 <div class="panel-heading">Formulario de Traslado de bienes:    {{ $inventariable->descripcionbien }}</div>
 

@@ -39,13 +39,15 @@ class InventariableController extends Controller
 
             'descripcionbien' => 'nullable|string|max:255',
             'costo_incorporacion' => 'required|numeric',
-            'costo_incorporacion' => 'required',
-            'ubicacion_id' => 'required'
+            'ubicacion_id' => 'required',
+            'sububicacion_id' => 'required',
+            'estado_conservacion' => 'required'
         ], [
             'fecha.required' => 'Es necesario ingresar la fecha de adquisicion.',
             'proveedor.required' => 'Es necesario ingresar el proveedor del bien.',
             'ordendecompra.required' => 'Es necesario ingresar el orden de compra del bien.',
             'factura.required' => 'Es necesario ingresar la factura del bien.',
+            'estado_conservacion.required' => 'Es necesario ingresar el estado de conservacion del bien.',
 
             //Codigo asignado
             'grupo_id.required' => 'Es necesario ingresar el grupo del bien.',
@@ -65,8 +67,26 @@ class InventariableController extends Controller
 
     public function edit($id)
     {
-        $proveedor = Proveedor::findOrFail($id);
-        return view('proveedores.edit')->with(compact('proveedor'));
+        $inventariable = Inventariable::findOrFail($id);
+        return view('inventariables.edit')->with(compact('inventariable'));
+    }
+
+    public function edita($id)
+    {
+        $alta = Inventariable::findOrFail($id);
+        return view('altas.edita')->with(compact('alta'));
+    }
+
+    public function editt($id)
+    {
+        $traslado = Inventariable::findOrFail($id);
+        return view('traslados.edit')->with(compact('traslado'));
+    }
+
+    public function editb($id)
+    {
+        $baja = Inventariable::findOrFail($id);
+        return view('bajas.edit')->with(compact('baja'));
     }
 
 
@@ -88,10 +108,136 @@ class InventariableController extends Controller
         return back();
     }
 
-    public function delete($id)
+    public function updatea($id, Request $request)
     {
-        Proveedor::find($id)->delete();
-        return back();
+        $rules = [
+            'descripcionbien' => 'required',
+
+            'ordendecompra' => 'required',
+            'factura' => 'required',
+            'fecha' => 'required',
+            'costo_incorporacion' => 'required',
+
+            'estado_conservacion' => 'required'
+        ];
+
+        $messages = [
+            'descripcionbien.required' => 'Es necesario ingresar la descripcion del bien.',
+
+            'ordendecompra.required' => 'Es necesario ingresar el orden de compra del bien.',
+            'factura.required' => 'Es necesario ingresar la factura del bien.',
+            'fecha.required' => 'Es necesario ingresar la fecha de ultimo movimiento.',
+            'costo_incorporacion.required' => 'Es necesario ingresar el costo del bien.',
+
+            'estado_conservacion.required' => 'Es necesario ingresar estado del bien.',
+        ];
+        $this->validate($request, $rules, $messages);
+
+        $alta = Inventariable::find($id);
+        $alta->descripcionbien = $request->input('descripcionbien');
+        $alta->ordendecompra = $request->input('ordendecompra');
+        $alta->factura = $request->input('factura');
+        $alta->fecha = $request->input('fecha');
+        $alta->costo_incorporacion = $request->input('costo_incorporacion');
+        $alta->estado_conservacion = $request->input('estado_conservacion');
+
+
+        $alta->save();
+        return back()->with('notification','Inventariable actualizado exitosamente.');
+    }
+
+    public function updatet($id, Request $request)
+    {
+        $rules = [
+            'descripcionbien' => 'required',
+
+            'ordendecompra' => 'required',
+            'factura' => 'required',
+            'fecha' => 'required',
+            'costo_incorporacion' => 'required',
+
+            'estado_conservacion' => 'required'
+        ];
+
+        $messages = [
+            'descripcionbien.required' => 'Es necesario ingresar la descripcion del bien.',
+
+            'ordendecompra.required' => 'Es necesario ingresar el orden de compra del bien.',
+            'factura.required' => 'Es necesario ingresar la factura del bien.',
+            'fecha.required' => 'Es necesario ingresar la fecha de ultimo movimiento.',
+            'costo_incorporacion.required' => 'Es necesario ingresar el costo del bien.',
+
+            'estado_conservacion.required' => 'Es necesario ingresar estado del bien.',
+        ];
+        $this->validate($request, $rules, $messages);
+
+        $alta = Inventariable::find($id);
+        $alta->descripcionbien = $request->input('descripcionbien');
+        $alta->ordendecompra = $request->input('ordendecompra');
+        $alta->factura = $request->input('factura');
+        $alta->fecha = $request->input('fecha');
+        $alta->costo_incorporacion = $request->input('costo_incorporacion');
+        $alta->estado_conservacion = $request->input('estado_conservacion');
+
+
+        $alta->save();
+        return back()->with('notification','Inventariable actualizado exitosamente.');
+    }
+
+    public function updateb($id, Request $request)
+    {
+        $rules = [
+            'descripcionbien' => 'required',
+
+            'ordendecompra' => 'required',
+            'factura' => 'required',
+            'fecha' => 'required',
+            'costo_incorporacion' => 'required',
+
+            'estado_conservacion' => 'required'
+        ];
+
+        $messages = [
+            'descripcionbien.required' => 'Es necesario ingresar la descripcion del bien.',
+
+            'ordendecompra.required' => 'Es necesario ingresar el orden de compra del bien.',
+            'factura.required' => 'Es necesario ingresar la factura del bien.',
+            'fecha.required' => 'Es necesario ingresar la fecha de ultimo movimiento.',
+            'costo_incorporacion.required' => 'Es necesario ingresar el costo del bien.',
+
+            'estado_conservacion.required' => 'Es necesario ingresar estado del bien.',
+        ];
+        $this->validate($request, $rules, $messages);
+
+        $baja = Inventariable::find($id);
+        $baja->descripcionbien = $request->input('descripcionbien');
+        $baja->ordendecompra = $request->input('ordendecompra');
+        $baja->factura = $request->input('factura');
+        $baja->fecha = $request->input('fecha');
+        $baja->costo_incorporacion = $request->input('costo_incorporacion');
+        $baja->estado_conservacion = $request->input('estado_conservacion');
+
+
+        $baja->save();
+        return back()->with('notification','Inventariable actualizado exitosamente.');
+    }
+
+    public function deletea($id)
+    {
+        $alta = Inventariable::find($id)->delete();
+        return back()->with('notification','Inventariable eliminado exitosamente.');
+    }
+
+    public function deleteb($id)
+    {
+        $baja = Inventariable::find($id)->delete();
+        return back()->with('notification','Inventariable eliminado exitosamente.');
+    }
+
+    public function deletet($id)
+    {
+        $traslado = Inventariable::find($id)->delete();
+        return back()->with('notification','Inventariable eliminado exitosamente.');
     }
 
    

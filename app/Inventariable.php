@@ -91,7 +91,31 @@ class Inventariable extends Model
 
     public function scopeSearch2($query, $s){
             return $query->where('sububicacion_id', 'like', "%" .$s. '%');   
-    } 
+    }
 
+
+    public function scopeFecha($query, $fecha)
+    {
+            if($fecha) 
+                return $query->where('fecha', 'LIKE', "%$fecha%");
+    }
+
+    public function scopeGrupo_id($query, $grupo_id)
+    {
+            if($grupo_id) 
+                return $query->where('grupo_id', 'LIKE', "%$grupo_id%");   
+    }
+
+    public function scopeSubgrupo_id($query, $subgrupo_id)
+    {
+            if($subgrupo_id) 
+                return $query->where('subgrupo_id', 'LIKE', "%$subgrupo_id%");   
+    }
+
+    public function scopeEspecie_id($query, $especie_id)
+    {
+            if($especie_id) 
+                return $query->where('especie_id', 'LIKE', "%$especie_id%");   
+    }    
 
 }

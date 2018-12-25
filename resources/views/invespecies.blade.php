@@ -22,7 +22,7 @@
             </div>
 
 
-                <h3 class="panel-title">Seleccione especie</h3>  
+                <h3 class="panel-title">Seleccione especie&nbsp&nbsp<a href="/altas/altaespecie"><button class="btn btn-success">Nueva</button></a></h3>
 
 
                 </br>

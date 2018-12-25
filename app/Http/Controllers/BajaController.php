@@ -3,6 +3,9 @@
 namespace SisInventario\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SisInventario\Grupo;
+use SisInventario\Subgrupo;
+use SisInventario\Especie;
 use SisInventario\Http\Controllers\Controller;
 use SisInventario\Inventariable;
 
@@ -16,17 +19,32 @@ class BajaController extends Controller
 
     public function index(Request $request)
     {
-        $descripcionbien = $request->get('descripcionbien');
+       $descripcionbien = $request->get('descripcionbien');
+        $grupo_id = $request->get('grupo_id');
+        $subgrupo_id = $request->get('subgrupo_id');
+        $especie_id = $request->get('especie_id');
+
+        $grupos = Grupo::all();
+        $subgrupos = Subgrupo::all();
+        $especies = Especie::all();
 
         $altas = Inventariable::where('movimiento_id', 1)
+            ->grupo_id($grupo_id)
+            ->subgrupo_id($subgrupo_id)
+            ->especie_id($especie_id)
             ->descripcionbien($descripcionbien)
+            ->latest()
             ->paginate(4);
 
         $traslados = Inventariable::where('movimiento_id', 3)
+            ->grupo_id($grupo_id)
+            ->subgrupo_id($subgrupo_id)
+            ->especie_id($especie_id)
             ->descripcionbien($descripcionbien)
+            ->latest()
             ->paginate(4); 
 
-        return view('bajas/bajabien')->with(compact('altas', 'traslados'));
+        return view('bajas/bajabien')->with(compact('altas', 'traslados','grupos','subgrupos'));
     }
 
     public function store(Request $request)

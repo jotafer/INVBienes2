@@ -40,33 +40,63 @@ class InventariobienesController extends Controller
     public function index(Request $request)
     {
 
+        $descripcionbien = $request->get('descripcionbien');
+        $grupo_id = $request->get('grupo_id');
+        $subgrupo_id = $request->get('subgrupo_id');
+        $especie_id = $request->get('especie_id');
+
         $grupos = Grupo::all();
         $subgrupos = Subgrupo::all();
         $especies = Especie::all();
         $ubicaciones = Ubicacion::all();
-        $altas = Inventariable::where('movimiento_id', 1)->paginate(4);
-        $bajas = Inventariable::where('movimiento_id', 2)->paginate(4);
-        $traslados = Inventariable::where('movimiento_id', 3)->paginate(4);
-        return view('inventariobienes')->with(compact('altas', 'traslados','bajas'));
+
+        $altas = Inventariable::where('movimiento_id', 1)
+            ->grupo_id($grupo_id)
+            ->subgrupo_id($subgrupo_id)
+            ->especie_id($especie_id)
+            ->descripcionbien($descripcionbien)
+            ->latest()
+            ->paginate(4);
+
+        $bajas = Inventariable::where('movimiento_id', 2)
+            ->grupo_id($grupo_id)
+            ->subgrupo_id($subgrupo_id)
+            ->especie_id($especie_id)
+            ->descripcionbien($descripcionbien)
+            ->latest()
+            ->paginate(4);
+
+        $traslados = Inventariable::where('movimiento_id', 3)
+            ->grupo_id($grupo_id)
+            ->subgrupo_id($subgrupo_id)
+            ->especie_id($especie_id)
+            ->descripcionbien($descripcionbien)
+            ->latest()
+            ->paginate(4); 
+
+        return view('inventariobienes')->with(compact('altas', 'traslados','bajas','grupos','subgrupos','ubicaciones'));
     }
 
     public function plaqueta(Request $request)
     {
         $u = $request->input('u');
         $s = $request->input('s');
-        $f = $request->input('f');
+        $fecha = $request->input('fecha');
 
         $ubiselecc = $request->input('ubiselecc');
         $sububiselecc = $request->input('sububiselecc');
+        $fecha = $request->input('fecha');
 
         $ubicaciones = Ubicacion::all();
         $ubicacion_id = $request->get('ubicacion_id');
         $sububicacion_id = $request->get('sububicacion_id');
+        $fecha = $request->get('fecha');
         //$sububicacion_id = $request->get('sububicacion_id');
 
         $inventariables = Inventariable::latest()
             ->ubicacion_id($ubicacion_id)
-            ->search($s)
+            ->fecha($fecha)
+            ->search($u)
             ->paginate(12);
 
 

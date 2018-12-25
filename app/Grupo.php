@@ -16,19 +16,19 @@ class Grupo extends Model{
     
     public static $rules = [
         'nombre' => 'required|string|max:255',
-        'codigo' => 'required|numeric|digits:2',
-        'codificacion' => 'required|unique:grupo|min:4'
+        'codigo' => 'required|numeric|digits:2|unique:grupo'
+        //'codificacion' => 'required|unique:grupo|min:4'
     ];
 
     public static $messages = [
     	'name.required' => 'Es necesario ingresar un nombre para el grupo.',
     	'codigo.required' => 'Es necesario ingresar un codigo para el grupo.',
-        'codificacion.unique' => 'Este grupo ya se encuentra registrado.'
+        'codigo.unique' => 'Este grupo ya se encuentra registrado.'
 
     ];
 
     protected $fillable = [
-        'nombre', 'codigo', 'codificacion'
+        'nombre', 'codigo'
     ];
 
     public function subgrupos()

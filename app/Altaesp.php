@@ -16,7 +16,7 @@ class Altaesp extends Model
         'grupo_id' => 'required|numeric',
         'subgrupo_id' => 'required',
         'especie_id' => 'required',
-        'codificacion' => 'required|unique:altaesps|min:5',
+        'codificacion' => 'required|unique:altaesps',
         'descripcion' => 'required'
     ];
 
